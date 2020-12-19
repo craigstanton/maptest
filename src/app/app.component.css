@@ -1,0 +1,17 @@
+
+.map-container {
+  height: auto;
+  position: absolute;
+  display: block;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.map-frame {
+  height: 100vh;
+}
+#park-map {
+  height: 100%;
+}
