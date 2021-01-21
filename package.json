@@ -20,7 +20,6 @@
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
     "esri-leaflet": "^2.5.1",
-    "esri-leaflet-vector": "^2.0.0",
     "leaflet": "^1.7.1",
     "mapbox-gl": "^1.0.0",
     "rxjs": "~6.4.0",

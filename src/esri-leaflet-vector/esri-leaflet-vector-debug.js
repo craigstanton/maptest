@@ -1,5 +1,5 @@
-/* esri-leaflet-vector - v2.0.1 - Thu Dec 17 2020 17:24:16 GMT+1300 (New Zealand Daylight Time)
- * Copyright (c) 2020 Environmental Systems Research Institute, Inc.
+/* esri-leaflet-vector - v2.0.1 - Fri Jan 22 2021 10:21:35 GMT+1300 (New Zealand Daylight Time)
+ * Copyright (c) 2021 Environmental Systems Research Institute, Inc.
  * Apache-2.0 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('leaflet'), require('mapbox-gl'), require('esri-leaflet')) :
@@ -472,46 +472,45 @@
       if (typeof options.id === 'string') {
         var itemMetadataUrl = Layer.URLPREFIX + options.id;
         var tileUrl;
-        var styleUrl;
 
         esriLeaflet.request(itemMetadataUrl, {}, function (error, metadata) {
           if (!error) {
             tileUrl = metadata.url;
 
             // custom tileset published using ArcGIS Pro
-            if (tileUrl.indexOf('basemaps.arcgis.com') === -1) {
-              this._customTileset = true;
-              // if copyright info was published, display it.
-              if (metadata.accessInformation) {
-                this._copyrightText = metadata.accessInformation;
-              }
-              esriLeaflet.request(tileUrl, {}, function (error, tileMetadata) {
-                if (!error) {
-                  // right now ArcGIS Pro published vector services have a slightly different signature
-                  if (tileMetadata.defaultStyles.charAt(0) !== '/') {
-                    tileMetadata.defaultStyles = '/' + tileMetadata.defaultStyles;
-                  }
-
-                  styleUrl = tileUrl + tileMetadata.defaultStyles + '/root.json';
-                  esriLeaflet.request(styleUrl, {}, function (error, style) {
-                    if (!error) {
-                      formatStyle(style, tileMetadata, styleUrl);
-
-                      this._mapboxGL = L.mapboxGL({
-                        accessToken: 'ezree',
-                        style: style
-                      });
-
-                      this._ready = true;
-                      this.fire('ready', {}, true);
-                    }
-                  }, this);
-                }
-              }, this);
-            } else {
+            // if (tileUrl.indexOf('basemaps.arcgis.com') === -1) {
+            //   this._customTileset = true;
+            //   // if copyright info was published, display it.
+            //   if (metadata.accessInformation) {
+            //     this._copyrightText = metadata.accessInformation;
+            //   }
+            //   request(tileUrl, {}, function (error, tileMetadata) {
+            //     if (!error) {
+            //       // right now ArcGIS Pro published vector services have a slightly different signature
+            //       if (tileMetadata.defaultStyles.charAt(0) !== '/') {
+            //         tileMetadata.defaultStyles = '/' + tileMetadata.defaultStyles;
+            //       }
+  // 
+            //       styleUrl = tileUrl + tileMetadata.defaultStyles + '/root.json';
+            //       request(styleUrl, {}, function (error, style) {
+            //         if (!error) {
+            //           formatStyle(style, tileMetadata, styleUrl);
+  // 
+            //           this._mapboxGL = L.mapboxGL({
+            //             accessToken: 'ezree',
+            //             style: style
+            //           });
+  // 
+            //           this._ready = true;
+            //           this.fire('ready', {}, true);
+            //         }
+            //       }, this);
+            //     }
+            //   }, this);
+            // } else {
               // custom symbology applied to hosted basemap tiles
               fetchMetadata(itemMetadataUrl + '/resources/styles/root.json', this);
-            }
+            // }
           }
         }, this);
       } else {
