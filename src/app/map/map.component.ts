@@ -22,7 +22,8 @@ export class MapComponent implements OnInit {
     hillshadeLayer.addTo(map);
     // raster toplevel
     var rasterBasemap = esriLeaflet.tiledMapLayer({
-      url: 'https://tiles.arcgis.com/tiles/hLRlshaEMEYQG5A8/arcgis/rest/services/niwa_png_nz_0_13_v2/MapServer',
+      // url: 'https://tiles.arcgis.com/tiles/hLRlshaEMEYQG5A8/arcgis/rest/services/niwa_png_nz_0_13_v2/MapServer',
+      url: 'https://tiles.arcgis.com/tiles/fp1tibNcN9mbExhG/arcgis/rest/services/NIWA_Weather_Basemap/MapServer',
       maxZoom: 13
     });
     rasterBasemap.addTo(map);
